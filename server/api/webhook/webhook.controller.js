@@ -304,7 +304,7 @@ const showStations = (response, convo, stations) => {
     }
   ]);
 };
-
+//show details
 const showDetailedStations = (response, convo, info) => {
   convo.ask({
     attachment: {
