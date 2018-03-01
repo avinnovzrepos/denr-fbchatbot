@@ -8,7 +8,6 @@
 import Botkit from 'botkit';
 import request from 'request';
 import axios from 'axios';
-import { resolve } from 'path';
 
 const BOT_CONTROLLER = Botkit.facebookbot({
   access_token: process.env.ACCESS_TOKEN,
