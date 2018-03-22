@@ -106,7 +106,7 @@ const clearAirAct = (response, convo) => {
           image_url: 'https://s3-ap-southeast-1.amazonaws.com/denr-swm/AQI.png',
           buttons: [{
             type:"web_url",
-            url: "https://s3-ap-southeast-1.amazonaws.com/denr-swm/EnvironmentalPolicyWallpaper2018-1.jpg",
+            url: "http://air.emb.gov.ph/?page_id=39",
             title: "READ THIS LAW"
           }, {
             type: "postback",
@@ -150,11 +150,11 @@ const otherCountries = (response, convo) => {
           title: 'Other Air Quality Related Laws and Guides',
           buttons: [{
             type: "web_url",
-            url: "https://www.epa.gov/naaqs/particulate-matter-pm-air-quality-standards",
+            url: "https://www3.epa.gov/airnow/aqi-technical-assistance-document-may2016.pdf",
             title: "US EPA"
           }, {
             type: "web_url",
-            url: "http://aqicn.org/city/beijing/",
+            url: "http://english.mep.gov.cn/Resources/standards/Air_Environment/",
             title: "CHINA"
           }, {
             type: "postback",
@@ -500,7 +500,7 @@ const pollutantList = (response, convo) => {
           image_url: "https://s3-ap-southeast-1.amazonaws.com/denr-swm/PM2.5.png",
           buttons: [{
             type: "web_url",
-            url: "https://s3-ap-southeast-1.amazonaws.com/denr-swm/PM2.5.png",
+            url: "https://airnow.gov/index.cfm?action=aqibasics.particle",
             title: "MORE DETAILS"
           }, {
             type: "postback",
@@ -517,7 +517,7 @@ const pollutantList = (response, convo) => {
           image_url: "https://s3-ap-southeast-1.amazonaws.com/denr-swm/PM10.png",
           buttons: [{
             type: "web_url",
-            url: "https://s3-ap-southeast-1.amazonaws.com/denr-swm/PM10.png",
+            url: "http://www.npi.gov.au/resource/particulate-matter-pm10-and-pm25",
             title: "MORE DETAILS"
           }, {
             type: "postback",
@@ -534,7 +534,7 @@ const pollutantList = (response, convo) => {
           image_url: "https://s3-ap-southeast-1.amazonaws.com/denr-swm/ozoneform.gif",
           buttons: [{
             type: "web_url",
-            url: "https://s3-ap-southeast-1.amazonaws.com/denr-swm/ozoneform.gif",
+            url: "https://www.airnow.gov/index.cfm?action=aqibasics.ozone",
             title: "MORE DETAILS"
           }, {
             type: "postback",
