@@ -53,7 +53,7 @@ const mainMenu = (response, convo) => {
           type: "postback"
         }, {
           title: 'CHECK AIR QUALITY INDEX',
-          payload: 'Check Air Quality Index',
+          payload: 'Check Air Quality',
           type: "postback"
         }, {
           title: 'USEFUL INFORMATION',
@@ -329,33 +329,36 @@ const getStations = () => {
 const showStations = (response, convo, stations) => {
   let stationsTemplate = [];
   let convoPattern = [];
+  let invalidStations = ['Navotas Station', 'North Caloocan Station', 'Pasay Station'];
   stations.map(value => {
-    stationsTemplate.push({
-      title: value.station.station_name,
-      subtitle: `${value.concern_level}, AQI: ${Math.floor(value.highest_pollutant_value)} (${value.highest_pollutant}) As of ${new Date(value.updated_at).toLocaleString()}`,
-      image_url: `https:\/\/maps.googleapis.com\/maps\/api\/staticmap?size=764x400&center=${value.station.latitude},${value.station.longitude}.04&zoom=15&markers=${value.station.latitude},${value.station.longitude}`,
-      item_url: `http:\/\/maps.apple.com\/maps?q=${value.station.latitude},${value.station.longitude}&z=16`,
-      buttons: [{
-        type: "postback",
-        title: "SHOW DETAIL INFO",
-        payload: value.station.station_name
-      }, {
-        type: "postback",
-        title: "SELECT OTHER REGION",
-        payload: "Select Other Region"
-      }, {
-        type: "postback",
-        title: "GO TO MAIN MENU",
-        payload: "Go To Main Menu"
-      }],
-    });
-    convoPattern.push({
-      pattern: value.station.station_name,
-      callback: (response, convo) => {
-        showDetailedStations(response, convo, value, stations);
-        convo.next();
-      }
-    });
+    if(invalidStations.indexOf(value.station.station_name) <= -1) {
+      stationsTemplate.push({
+        title: value.station.station_name,
+        subtitle: `${value.concern_level}, AQI: ${Math.floor(value.highest_pollutant_value)} (${value.highest_pollutant}) As of ${new Date(value.updated_at).toLocaleString()}`,
+        image_url: `https:\/\/maps.googleapis.com\/maps\/api\/staticmap?size=764x400&center=${value.station.latitude},${value.station.longitude}.04&zoom=15&markers=${value.station.latitude},${value.station.longitude}`,
+        item_url: `http:\/\/maps.apple.com\/maps?q=${value.station.latitude},${value.station.longitude}&z=16`,
+        buttons: [{
+          type: "postback",
+          title: "SHOW DETAIL INFO",
+          payload: value.station.station_name
+        }, {
+          type: "postback",
+          title: "SELECT OTHER REGION",
+          payload: "Select Other Region"
+        }, {
+          type: "postback",
+          title: "GO TO MAIN MENU",
+          payload: "Go To Main Menu"
+        }],
+      });
+      convoPattern.push({
+        pattern: value.station.station_name,
+        callback: (response, convo) => {
+          showDetailedStations(response, convo, value, stations);
+          convo.next();
+        }
+      });
+    }
   });
 
   convo.ask({
